@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    class Bishop : IPiece
+    class King : IPiece
     {
         public int[,] ChessBoard { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public Enum_Color.Color Color { get; set; }
 
-        public Bishop(int x, int y, Enum_Color.Color color)
+        public King(int x, int y, Enum_Color.Color color)
         {
             this.X = x;
             this.Y = y;
@@ -30,20 +30,12 @@ namespace Chess
                     ChessBoard[i, j] = 0;
                 }
             }
-
-        }
-
-        public IPiece Move(int x, int y)
-        {
-            if (CanMove(x, y)) 
+            for (int i = 0; i < 8; i++)
             {
-                this.X = x;
-                this.Y = y;
-                return this;
-            }
-            else
-            {
-                throw new Exception("fdsf");
+                for (int j = 0; j < 8; j++)
+                {
+                    if(X-+1 == i)
+                }
             }
         }
     }

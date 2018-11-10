@@ -8,12 +8,73 @@ namespace Chess
 {
     class Knight : IPiece
     {
+        public int[,] ChessBoard { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public Enum_Color.Color Color { get; set; }
 
-        private bool CanMove(int x, int y)
+        public Knight(int x, int y, Enum_Color.Color color)
         {
-            if()
+            this.X = x;
+            this.Y = y;
+            this.Color = color;
+            ChessBoard = new int[8, 8];
+        }
+
+        private void AvailableMoves()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    ChessBoard[i, j] = 0;
+                }
+            }
+            if (X + 1 <= 7 && Y + 2 <= 7) 
+            {
+                ChessBoard[X + 1, Y + 2] = 1;
+            }
+            if (X + 1 <= 7 && Y - 2 <= 7)
+            {
+                ChessBoard[X + 1, Y - 2] = 1;
+            }
+            if (X + 2 <= 7 && Y - 1 <= 7)
+            {
+                ChessBoard[X + 2, Y - 1] = 1;
+            }
+            if (X + 2 <= 7 && Y + 1 <= 7)
+            {
+                ChessBoard[X + 2, Y + 1] = 1;
+            }
+            if (X - 2 <= 7 && Y + 1 <= 7)
+            {
+                ChessBoard[X - 2, Y + 1] = 1;
+            }
+            if (X - 2 <= 7 && Y - 1 <= 7)
+            {
+                ChessBoard[X - 2, Y - 1] = 1;
+            }
+            if (X - 1 <= 7 && Y + 2 <= 7)
+            {
+                ChessBoard[X - 1, Y + 2] = 1;
+            }
+            if (X - 1 <= 7 && Y - 2 <= 7)
+            {
+                ChessBoard[X - 1, Y - 2] = 1;
+            }
+        }
+
+        public IPiece Move(int x, int y)
+        {
+            AvailableMoves();
+            if (ChessBoard[x, y] == 1) 
+            {
+                return this;
+            }
+            else
+            {
+                throw new Exception("fdsfsdf");
+            }
         }
     }
 }

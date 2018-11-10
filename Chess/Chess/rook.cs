@@ -8,27 +8,42 @@ namespace Chess
 {
     class Rook : IPiece
     {
+        public int[,] ChessBoard { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public Enum_Color.Color Color { get; set; }
 
-        private bool CanMove(int x, int y)
+        public Rook(int x, int y, Enum_Color.Color color)
         {
-            if(this.X == x || this.Y == y)
+            this.X = x;
+            this.Y = y;
+            this.Color = color;
+            ChessBoard = new int[8, 8];
+        }
+
+        private void AvailableMoves()
+        {
+            for (int i = 0; i < 8; i++)
             {
-                return true;
+                for (int j = 0; j < 8; j++)
+                {
+                    ChessBoard[i,j] = 0;
+                }
             }
-            else
+            for (int i = 0; i < 8; i++) 
             {
-                return false;
+                ChessBoard[X,i] = 1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ChessBoard[i,Y] = 1;
             }
         }
 
         public IPiece Move(int x, int y)
         {
-            if(CanMove(x,y))
+            if (ChessBoard[x, y] == 1)
             {
-                this.X = x;
-                this.Y = y;
                 return this;
             }
             else

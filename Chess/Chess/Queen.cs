@@ -8,20 +8,19 @@ namespace Chess
 {
     class Queen : IPiece
     {
+        public int[,] ChessBoard { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public Enum_Color.Color Color { get; set; }
 
-        private bool CanMove(int x, int y)
+        public Queen(int x, int y, Enum_Color.Color color)
         {
-            if((this.X == x || this.Y == y) || (Math.Abs(this.X - x) == Math.Abs(this.Y - y)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            this.X = x;
+            this.Y = y;
+            this.Color = color;
+            ChessBoard = new int[8, 8];
         }
+
         public IPiece Move(int x, int y)
         {
             if (CanMove(x, y))
