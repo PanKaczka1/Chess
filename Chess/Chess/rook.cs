@@ -24,32 +24,33 @@ namespace Chess
 
         private void AvailableMoves()
         {
-            for (int i = 0; i < 8; i++)
+            int i, j;
+            for (i = 0; i < 8; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (j = 0; j < 8; j++)
                 {
                     ChessBoard[i,j] = 0;
                 }
             }
-            for (int i = X + 1; i < 8; i++) 
+            for (i = X + 1; i < 8; i++) 
             {
                 ChessBoard[X, i] = 1;
                 if (OccupiedFields[X, i] == 1)
                     break;
             }
-            for (int i = X - 1; i >= 0; i--)
+            for (i = X - 1; i >= 0; i--)
             {
                 ChessBoard[X, i] = 1;
                 if (OccupiedFields[X, i] == 1)
                     break;
             }
-            for (int i = Y + 1; i < 8; i++)
+            for (i = Y + 1; i < 8; i++)
             {
                 ChessBoard[i, Y] = 1;
                 if (OccupiedFields[i, Y] == 1)
                     break;
             }
-            for (int i = Y - 1; i >= 0; i --)
+            for (i = Y - 1; i >= 0; i --)
             {
                 ChessBoard[i, Y] = 1;
                 if (OccupiedFields[i, Y] == 1)

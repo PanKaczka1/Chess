@@ -9,6 +9,7 @@ namespace Chess
     class King : IPiece
     {
         public int[,] ChessBoard { get; set; }
+        public int[,] OccupiedFields { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public Enums.Color Color { get; set; }
@@ -23,19 +24,25 @@ namespace Chess
 
         private void AvailableMoves()
         {
-            for (int i = 0; i < 8; i++)
+            ChessBoard[X + 1, Y] = 1;
+            ChessBoard[X + 1, Y + 1] = 1;
+            ChessBoard[X + 1, Y - 1] = 1;
+            ChessBoard[X - 1, Y] = 1;
+            ChessBoard[X - 1, Y + 1] = 1;
+            ChessBoard[X - 1, Y - 1] = 1;
+            ChessBoard[X, Y + 1] = 1;
+            ChessBoard[X, Y - 1] = 1;
+        }
+        public IPiece Move(int x, int y)
+        {
+            AvailableMoves();
+            if (ChessBoard[x, y] == 1)
             {
-                for (int j = 0; j < 8; j++)
-                {
-                    ChessBoard[i, j] = 0;
-                }
+                return this;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                for (int j = 0; j < 8; j++)
-                {
-                    if(X-+1 == i)
-                }
+                throw new Exception("fdsf");
             }
         }
     }

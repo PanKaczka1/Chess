@@ -9,6 +9,7 @@ namespace Chess
     class Bishop : IPiece
     {
         public int[,] ChessBoard { get; set; }
+        public int[,] OccupiedFields { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public Enums.Color Color { get; set; }
@@ -23,22 +24,49 @@ namespace Chess
 
         private void AvailableMoves()
         {
-            for (int i = 0; i < 8; i++)
+            int i, j;
+            for (i = 0; i < 8; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (j = 0; j < 8; j++)
                 {
                     ChessBoard[i, j] = 0;
                 }
             }
-
+            for (i = X + 1; i < 8; i++) 
+                for (j = Y + 1; i < 8; i++) 
+                {
+                    ChessBoard[i, j] = 1;
+                    if (OccupiedFields[i, j] == 1)
+                        break;
+                }
+            for (i = X - 1; i >= 0; i--)
+                for (j = Y + 1; i < 8; i++)
+                {
+                    ChessBoard[i, j] = 1;
+                    if (OccupiedFields[i, j] == 1)
+                        break;
+                }
+            for (i = X - 1; i >= 0; i--)
+                for (j = Y - 1; i >= 0; i--)
+                {
+                    ChessBoard[i, j] = 1;
+                    if (OccupiedFields[i, j] == 1)
+                        break;
+                }
+            for (i = X + 1; i < 8; i++)
+                for (j = Y - 1; i >= 0; i--)
+                {
+                    ChessBoard[i, j] = 1;
+                    if (OccupiedFields[i, j] == 1)
+                        break;
+                }
         }
 
         public IPiece Move(int x, int y)
         {
-            if (CanMove(x, y)) 
+            AvailableMoves();
+            if (ChessBoard[x, y] == 1)  
             {
-                this.X = x;
-                this.Y = y;
                 return this;
             }
             else

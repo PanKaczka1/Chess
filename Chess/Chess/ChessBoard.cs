@@ -75,6 +75,7 @@ namespace Chess
             }
             else
             {
+                Board[piece.X, piece.Y] = null;
                 piece.Move(x, y);
                 Board[x, y] = piece;
             }

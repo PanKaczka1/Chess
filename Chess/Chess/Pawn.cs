@@ -35,7 +35,7 @@ namespace Chess
             }
             switch (Color)
             {
-                case Enums.Color.Black:
+                case Enums.Color.White:
                     if (haveMoved == false)
                     {
                         ChessBoard[X,Y - 1] = 1;
@@ -48,7 +48,7 @@ namespace Chess
                         ChessBoard[X,Y - 1] = 1;
                         break;
                     }
-                case Enums.Color.White:
+                case Enums.Color.Black:
                     if (haveMoved == false)
                     {
                         ChessBoard[X,Y + 1] = 1;
