@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Bishop.cs" />
     <Compile Include="ChessBoard.cs" />
-    <Compile Include="Enum_Color.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="IPiece.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Knight.cs" />

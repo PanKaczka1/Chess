@@ -9,12 +9,13 @@ namespace Chess
     class Pawn : IPiece
     {
         public int[,] ChessBoard { get; set; }
+        public int[,] OccupiedFields { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         private bool haveMoved;
-        public Enum_Color.Color Color { get; set; }
+        public Enums.Color Color { get; set; }
 
-        public Pawn(int x, int y, Enum_Color.Color color)
+        public Pawn(int x, int y, Enums.Color color)
         {
             haveMoved = false;
             this.X = x;
@@ -34,11 +35,12 @@ namespace Chess
             }
             switch (Color)
             {
-                case Enum_Color.Color.black:
+                case Enums.Color.Black:
                     if (haveMoved == false)
                     {
                         ChessBoard[X,Y - 1] = 1;
-                        ChessBoard[X,Y - 2] = 1;
+                        if (OccupiedFields[X, Y - 1] == 0)
+                            ChessBoard[X, Y - 2] = 1;
                         break;
                     }
                     else
@@ -46,16 +48,17 @@ namespace Chess
                         ChessBoard[X,Y - 1] = 1;
                         break;
                     }
-                case Enum_Color.Color.white:
+                case Enums.Color.White:
                     if (haveMoved == false)
                     {
-                        ChessBoard[X,Y - 1] = 1;
-                        ChessBoard[X,Y - 2] = 1;
+                        ChessBoard[X,Y + 1] = 1;
+                        if (OccupiedFields[X, Y + 1] == 0) 
+                            ChessBoard[X,Y + 2] = 1;
                         break;
                     }
                     else
                     {
-                        ChessBoard[X,Y - 1] = 1;
+                        ChessBoard[X,Y + 1] = 1;
                         break;
                     }
             }

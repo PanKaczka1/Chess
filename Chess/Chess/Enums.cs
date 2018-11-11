@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    static class Enum_Color
+    static class Enums
     {
-        public enum Color { black, white }
+        public enum Color { Black, White }
     }
 }
