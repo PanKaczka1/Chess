@@ -63,6 +63,8 @@ namespace Chess
             AvailableMoves();
             if (ChessBoard[x, y] == 1)
             {
+                this.X = x;
+                this.Y = y;
                 return this;
             }
             else
