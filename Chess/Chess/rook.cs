@@ -60,6 +60,7 @@ namespace Chess
 
         public IPiece Move(int x, int y)
         {
+            AvailableMoves();
             if (ChessBoard[x, y] == 1)
             {
                 return this;
