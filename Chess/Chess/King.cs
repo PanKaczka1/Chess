@@ -22,7 +22,7 @@ namespace Chess
             ChessBoard = new int[8, 8];
         }
 
-        private void AvailableMoves()
+        public void AvailableMoves()
         {
             ChessBoard[X + 1, Y] = 1;
             ChessBoard[X + 1, Y + 1] = 1;

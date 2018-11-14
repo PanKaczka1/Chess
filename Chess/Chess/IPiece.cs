@@ -14,6 +14,7 @@ namespace Chess
         int Y { get; set; }
         Enums.Color Color { get; set; }
 
+        void AvailableMoves();
         IPiece Move(int x, int y);
     }
 }

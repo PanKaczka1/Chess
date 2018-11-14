@@ -38,7 +38,32 @@ namespace Chess
             }
         }
 
-        private int[,] IsOccupied(IPiece piece)
+        private bool IsKingInCheck(IPiece piece)
+        {
+            int i, j, k, l;
+            for (i = 0; i < 8; i++) 
+                for (j = 0; j < 8; i++) 
+                {
+                    if (Board[i, j] is King && Board[i, j].Color == piece.Color) 
+                    {
+                        for (k = 0; i < 8; i++)
+                            for (l = 0; j < 8; i++)
+                            {
+                                if (Board[k, l].Color != piece.Color)
+                                {
+                                    Board[k, l].AvailableMoves();
+                                    if (Board[k, l].ChessBoard[i, j] == 1)
+                                    {
+                                        return true;
+                                    }
+                                }
+                            }
+                    }
+                }
+            return false;
+        }
+
+        private int[,] IsOccupied()
         {
             int[,] chessBoard = new int[8,8];
             for (int i = 0; i < 8; i++)
@@ -59,7 +84,9 @@ namespace Chess
 
         public void Move(int x, int y, IPiece piece)
         {
-            piece.OccupiedFields = IsOccupied(piece);
+            IPiece tmp = piece;
+            IPiece tmp2 = Board[x, y];
+            piece.OccupiedFields = IsOccupied();
             if (Board[x, y] != null)
             {
                 if(Board[x,y].Color != piece.Color)
@@ -67,6 +94,12 @@ namespace Chess
                     Board[piece.X, piece.Y] = null;
                     piece.Move(x, y);
                     Board[x, y] = piece;
+                    if (IsKingInCheck(piece))
+                    {
+                        Board[tmp.X, tmp.Y] = piece;
+                        piece.Move(tmp.X, tmp.Y);
+                        Board[x, y] = tmp2;
+                    }
                 }
                 else
                 {
@@ -78,6 +111,12 @@ namespace Chess
                 Board[piece.X, piece.Y] = null;
                 piece.Move(x, y);
                 Board[x, y] = piece;
+                if (IsKingInCheck(piece))
+                {
+                    Board[tmp.X, tmp.Y] = piece;
+                    piece.Move(tmp.X, tmp.Y);
+                    Board[x, y] = tmp2;
+                }
             }
         }
     }
