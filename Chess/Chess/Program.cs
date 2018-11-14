@@ -10,11 +10,13 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            View.DrawChessBoard();
-            Console.SetCursorPosition(3, 1);
-            Console.Write("X");
             ChessBoard chessBoard = new ChessBoard();
-            Console.SetCursorPosition(3, 1);
+            View.DrawChessBoard();
+            View.SetPieces(chessBoard);
+            while(true)
+            {
+                View.MoveFocus(chessBoard, (Console.WindowWidth - 72) / 2 + 3, 3);
+            }
             Console.ReadKey();
         }
     }
