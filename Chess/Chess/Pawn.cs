@@ -41,6 +41,7 @@ namespace Chess
                         ChessBoard[X,Y - 1] = 1;
                         if (OccupiedFields[X, Y - 1] == 0)
                             ChessBoard[X, Y - 2] = 1;
+                        haveMoved = true;
                         break;
                     }
                     else
@@ -54,6 +55,7 @@ namespace Chess
                         ChessBoard[X,Y + 1] = 1;
                         if (OccupiedFields[X, Y + 1] == 0) 
                             ChessBoard[X,Y + 2] = 1;
+                        haveMoved = true;
                         break;
                     }
                     else

@@ -10,13 +10,11 @@ namespace Chess
     {
         static void Main(string[] args)
         {
+            Console.Title = "Szachy";
             ChessBoard chessBoard = new ChessBoard();
             View.DrawChessBoard();
             View.SetPieces(chessBoard);
-            while(true)
-            {
-                View.MoveFocus(chessBoard, (Console.WindowWidth - 72) / 2 + 3, 3);
-            }
+            View.MoveFocus(chessBoard, (Console.WindowWidth - 72) / 2 + 3, 3);
             Console.ReadKey();
         }
     }
