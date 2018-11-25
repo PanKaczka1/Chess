@@ -49,12 +49,17 @@ namespace Chess
                 {
                     if (chessBoard.Board[l, k] is Pawn)
                     {
-                        //if (chessBoard.Board[k, l].Color == Enums.Color.White) 
-                        //{
                         Console.SetCursorPosition(j, i);
-                        Console.ForegroundColor = ConsoleColor.White;
+                        if (chessBoard.Board[l, k].Color == Enums.Color.White) 
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
                         Console.Write("P");
-                        //}
+
                     }
                     if (chessBoard.Board[l, k] is Rook)
                     {
@@ -149,6 +154,7 @@ namespace Chess
                         {
                             chessBoard.Move(xBoard, yBoard, piece);
                             piece = null;
+                            DrawChessBoard();
                         }
                         break;
                     default:
