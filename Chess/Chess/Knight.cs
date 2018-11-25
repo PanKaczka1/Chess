@@ -35,11 +35,11 @@ namespace Chess
             {
                 ChessBoard[X + 1, Y + 2] = 1;
             }
-            if (X + 1 <= 7 && Y - 2 <= 7)
+            if (X + 1 <= 7 && Y - 2 >= 0)
             {
                 ChessBoard[X + 1, Y - 2] = 1;
             }
-            if (X + 2 <= 7 && Y - 1 <= 7)
+            if (X + 2 <= 7 && Y - 1 >= 0)
             {
                 ChessBoard[X + 2, Y - 1] = 1;
             }
@@ -47,19 +47,19 @@ namespace Chess
             {
                 ChessBoard[X + 2, Y + 1] = 1;
             }
-            if (X - 2 <= 7 && Y + 1 <= 7)
+            if (X - 2 >= 0 && Y + 1 <= 7)
             {
                 ChessBoard[X - 2, Y + 1] = 1;
             }
-            if (X - 2 <= 7 && Y - 1 <= 7)
+            if (X - 2 >= 0 && Y - 1 >= 0)
             {
                 ChessBoard[X - 2, Y - 1] = 1;
             }
-            if (X - 1 <= 7 && Y + 2 <= 7)
+            if (X - 1 >= 0 && Y + 2 <= 7)
             {
                 ChessBoard[X - 1, Y + 2] = 1;
             }
-            if (X - 1 <= 7 && Y - 2 <= 7)
+            if (X - 1 >= 0 && Y - 2 >= 0)
             {
                 ChessBoard[X - 1, Y - 2] = 1;
             }
