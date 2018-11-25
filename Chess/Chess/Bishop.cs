@@ -22,7 +22,7 @@ namespace Chess
             ChessBoard = new int[8, 8];
         }
 
-        public void AvailableMoves()
+        public void GetAvailableMoves()
         {
             int i, j;
             for (i = 0; i < 8; i++)
@@ -64,7 +64,7 @@ namespace Chess
 
         public IPiece Move(int x, int y)
         {
-            AvailableMoves();
+            GetAvailableMoves();
             if (ChessBoard[x, y] == 1)  
             {
                 this.X = x;

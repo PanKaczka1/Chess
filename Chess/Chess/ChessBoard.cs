@@ -49,9 +49,9 @@ namespace Chess
                         for (k = 0; k < 8; k++)
                             for (l = 0; l < 8; l++)
                             {
-                                if (Board[k, l].Color != piece.Color)
+                                if (Board[k,l] != null && Board[k, l].Color != piece.Color)
                                 {
-                                    Board[k, l].AvailableMoves();
+                                    Board[k, l].GetAvailableMoves();
                                     if (Board[k, l].ChessBoard[i, j] == 1)
                                     {
                                         return true;
