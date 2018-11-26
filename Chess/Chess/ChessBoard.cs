@@ -51,6 +51,7 @@ namespace Chess
                             {
                                 if (Board[k,l] != null && Board[k, l].Color != piece.Color)
                                 {
+                                    Board[k, l].OccupiedFields = IsOccupied();
                                     Board[k, l].GetAvailableMoves();
                                     if (Board[k, l].ChessBoard[i, j] == 1)
                                     {
@@ -94,12 +95,12 @@ namespace Chess
                     Board[piece.X, piece.Y] = null;
                     piece.Move(x, y);
                     Board[x, y] = piece;
-                    if (IsKingInCheck(piece))
-                    {
-                        Board[tmp.X, tmp.Y] = piece;
-                        piece.Move(tmp.X, tmp.Y);
-                        Board[x, y] = tmp2;
-                    }
+                    //if (IsKingInCheck(piece))
+                    //{
+                    //    Board[tmp.X, tmp.Y] = piece;
+                    //    piece.Move(tmp.X, tmp.Y);
+                    //    Board[x, y] = tmp2;
+                    //}
                 }
                 else
                 {
@@ -111,12 +112,12 @@ namespace Chess
                 Board[piece.X, piece.Y] = null;
                 piece.Move(x, y);
                 Board[x, y] = piece;
-                if (IsKingInCheck(piece))
-                {
-                    Board[tmp.X, tmp.Y] = piece;
-                    piece.Move(tmp.X, tmp.Y);
-                    Board[x, y] = tmp2;
-                }
+                //if (IsKingInCheck(piece))
+                //{
+                //    Board[tmp.X, tmp.Y] = piece;
+                //    piece.Move(tmp.X, tmp.Y);
+                //    Board[x, y] = tmp2;
+                //}
             }
         }
     }

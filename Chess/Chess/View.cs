@@ -155,6 +155,7 @@ namespace Chess
                             chessBoard.Move(xBoard, yBoard, piece);
                             piece = null;
                             DrawChessBoard();
+                            SetPieces(chessBoard);
                         }
                         break;
                     default:
