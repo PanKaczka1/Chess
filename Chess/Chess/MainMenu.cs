@@ -42,43 +42,59 @@ namespace Chess
             Console.WriteLine("     CCC::::::::::::C h:::::h     h:::::h  ee:::::::::::::e   s:::::::::::ss   s:::::::::::ss  ");
             Console.SetCursorPosition((Console.WindowWidth - 95) / 2, 18);
             Console.WriteLine("        CCCCCCCCCCCCC hhhhhhh     hhhhhhh    eeeeeeeeeeeeee    sssssssssss      sssssssssss    ");
-            Console.SetCursorPosition((Console.WindowWidth - 10) / 2, 22);
-            Console.WriteLine("> New Game");
-            Console.SetCursorPosition((Console.WindowWidth - 6) / 2, 24);
-            Console.WriteLine("> Exit");
+            Console.SetCursorPosition((Console.WindowWidth - 8) / 2, 22);
+            Console.WriteLine("New Game");
+            Console.SetCursorPosition((Console.WindowWidth - 4) / 2, 24);
+            Console.WriteLine("Exit");
         }
 
         public static bool ChoseMenuOption()
         {
-            while(true)
+            Console.CursorVisible = false;
+            Console.SetCursorPosition((Console.WindowWidth - 11) / 2, 22);
+            Console.Write(">");
+            while (true)
             {
                 switch(Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.DownArrow:
                         if(Console.CursorLeft == (Console.WindowWidth - 10) / 2)
                         {
-                            Console.SetCursorPosition((Console.WindowWidth - 6) / 2, 24);
+                            Console.SetCursorPosition((Console.WindowWidth - 11) / 2, 22);
+                            Console.Write(" ");
+                            Console.SetCursorPosition((Console.WindowWidth - 7) / 2, 24);
+                            Console.Write(">");
                             break;
                         }
                         else
                         {
-                            Console.SetCursorPosition((Console.WindowWidth - 10) / 2, 22);
+                            Console.SetCursorPosition((Console.WindowWidth - 7) / 2, 24);
+                            Console.Write(" ");
+                            Console.SetCursorPosition((Console.WindowWidth - 11) / 2, 22);
+                            Console.Write(">");
                             break;
                         }
                     case ConsoleKey.UpArrow:
                         if (Console.CursorLeft == (Console.WindowWidth - 10) / 2)
                         {
-                            Console.SetCursorPosition((Console.WindowWidth - 6) / 2, 24);
+                            Console.SetCursorPosition((Console.WindowWidth - 11) / 2, 22);
+                            Console.Write(" ");
+                            Console.SetCursorPosition((Console.WindowWidth - 7) / 2, 24);
+                            Console.Write(">");
                             break;
                         }
                         else
                         {
-                            Console.SetCursorPosition((Console.WindowWidth - 10) / 2, 22);
+                            Console.SetCursorPosition((Console.WindowWidth - 7) / 2, 24);
+                            Console.Write(" ");
+                            Console.SetCursorPosition((Console.WindowWidth - 11) / 2, 22);
+                            Console.Write(">");
                             break;
                         }
                     case ConsoleKey.Enter:
                         if(Console.CursorLeft == (Console.WindowWidth - 10) / 2)
                         {
+                            Console.CursorVisible = true;
                             return true;
                         }
                         else

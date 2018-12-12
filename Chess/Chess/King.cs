@@ -24,27 +24,35 @@ namespace Chess
 
         public void GetAvailableMoves()
         {
-            ChessBoard[X + 1, Y] = 1;
-            ChessBoard[X + 1, Y + 1] = 1;
-            ChessBoard[X + 1, Y - 1] = 1;
-            ChessBoard[X - 1, Y] = 1;
-            ChessBoard[X - 1, Y + 1] = 1;
-            ChessBoard[X - 1, Y - 1] = 1;
-            ChessBoard[X, Y + 1] = 1;
-            ChessBoard[X, Y - 1] = 1;
+            if(X < 8)
+                ChessBoard[X + 1, Y] = 1;
+            if(X < 8 && Y < 8)
+                ChessBoard[X + 1, Y + 1] = 1;
+            if(X < 8 && Y > 0)
+                ChessBoard[X + 1, Y - 1] = 1;
+            if(X > 0)
+                ChessBoard[X - 1, Y] = 1;
+            if(X > 0 && Y < 8)
+                ChessBoard[X - 1, Y + 1] = 1;
+            if(X > 0 && Y > 0)
+                ChessBoard[X - 1, Y - 1] = 1;
+            if(Y < 8)
+                ChessBoard[X, Y + 1] = 1;
+            if(Y > 0)
+                ChessBoard[X, Y - 1] = 1;
         }
-        public IPiece Move(int x, int y)
+        public bool Move(int x, int y)
         {
             GetAvailableMoves();
             if (ChessBoard[x, y] == 1)
             {
                 this.X = x;
                 this.Y = y;
-                return this;
+                return true;
             }
             else
             {
-                throw new Exception("fdsf");
+                return false;
             }
         }
     }

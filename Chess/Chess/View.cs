@@ -40,7 +40,7 @@ namespace Chess
             Console.BackgroundColor = ConsoleColor.DarkGreen;
         }
 
-        static public void SetPieces(ChessBoard chessBoard)
+        static public void SetPieces(ChessBoard chessBoard, int cursorLeft, int cursorTop)
         {
             int i, j, k = 0, l;
             for (i = 3; i < 27; i += 3)
@@ -53,67 +53,59 @@ namespace Chess
                         Console.SetCursorPosition(j, i);
                         if (chessBoard.Board[l, k].Color == Enums.Color.White) 
                         {
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\u2659");
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.Write("\u265F");
                         }
-                        Console.Write("P");
 
                     }
                     if (chessBoard.Board[l, k] is Rook)
                     {
                         Console.SetCursorPosition(j, i);
                         if (chessBoard.Board[l, k].Color == Enums.Color.White)
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\u2656");
                         else
-                            Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("R");
+                            Console.Write("\u265C");
                     }
                     if (chessBoard.Board[l, k] is Knight)
                     {
                         Console.SetCursorPosition(j, i);
                         if (chessBoard.Board[l, k].Color == Enums.Color.White)
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\u2658");
                         else
-                            Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("N");
+                            Console.Write("\u265E");
                     }
                     if (chessBoard.Board[l, k] is Bishop)
                     {
                         Console.SetCursorPosition(j, i);
                         if (chessBoard.Board[l, k].Color == Enums.Color.White)
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\u2657");
                         else
-                            Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("B");
+                            Console.Write("\u265D");
                     }
                     if (chessBoard.Board[l, k] is Queen)
                     {
                         Console.SetCursorPosition(j, i);
                         if (chessBoard.Board[l, k].Color == Enums.Color.White)
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\u2655");
                         else
-                            Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("Q");
+                            Console.Write("\u265B");
                     }
                     if (chessBoard.Board[l, k] is King)
                     {
                         Console.SetCursorPosition(j, i);
-                        if (Console.BackgroundColor == ConsoleColor.Yellow)
-                            Console.BackgroundColor = ConsoleColor.Yellow;
                         if (chessBoard.Board[l, k].Color == Enums.Color.White)
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\u2654");
                         else
-                            Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("K");
+                            Console.Write("\u265A");
                     }
                     l++;
                 }
                 k++;
             }
-            Console.SetCursorPosition((Console.WindowWidth - 72) / 2 + 3, 3);
+            Console.SetCursorPosition(cursorLeft, cursorTop);
         }
         
 
@@ -127,36 +119,59 @@ namespace Chess
                 switch(Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.UpArrow:
+                        if (yBoard - 1 < 0)
+                            break;
                         Console.SetCursorPosition(x, y - 3);
                         y -= 3;
                         yBoard--;
                         break;
                     case ConsoleKey.DownArrow:
+                        if (yBoard + 1 > 7)
+                            break;
                         Console.SetCursorPosition(x, y + 3); 
                         y += 3;
                         yBoard++;
                         break;
                     case ConsoleKey.LeftArrow:
+                        if (xBoard - 1 < 0)
+                            break;
                         Console.SetCursorPosition(x - 8, y);
                         x -= 8;
                         xBoard--;
                         break;
                     case ConsoleKey.RightArrow:
+                        if (xBoard + 1 > 7)
+                            break;
                         Console.SetCursorPosition(x + 8, y);
                         x += 8;
                         xBoard++;
                         break;
                     case ConsoleKey.Enter:
+                        int cursorLeft = Console.CursorLeft;
+                        int cursorTop = Console.CursorTop;
+                        Console.SetCursorPosition(3, 10);
+                        Console.Write("                ");
+                        Console.SetCursorPosition(cursorLeft, cursorTop);
                         if (piece == null)
                         {
                             piece = chessBoard.Board[xBoard, yBoard];
                         }
                         else
                         {
+                            cursorLeft = Console.CursorLeft;
+                            cursorTop = Console.CursorTop;
+                            if(chessBoard.Move(xBoard, yBoard, piece) == false)
+                            {
+                                Console.SetCursorPosition(3, 10);
+                                Console.Write("Cant move there!");
+                            }
+                            else
+                            {
                             chessBoard.Move(xBoard, yBoard, piece);
+                            }
                             piece = null;
                             DrawChessBoard();
-                            SetPieces(chessBoard);
+                            SetPieces(chessBoard, cursorLeft, cursorTop);
                         }
                         break;
                     default:

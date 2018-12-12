@@ -83,7 +83,7 @@ namespace Chess
 
         }
 
-        public void Move(int x, int y, IPiece piece)
+        public bool Move(int x, int y, IPiece piece)
         {
             IPiece tmp = piece;
             IPiece tmp2 = Board[x, y];
@@ -92,32 +92,48 @@ namespace Chess
             {
                 if(Board[x,y].Color != piece.Color)
                 {
-                    Board[piece.X, piece.Y] = null;
-                    piece.Move(x, y);
-                    Board[x, y] = piece;
+                    if (piece.Move(x, y) == true)
+                    {
+                        Board[piece.X, piece.Y] = null;
+                        piece.Move(x, y);
+                        Board[x, y] = piece;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                     //if (IsKingInCheck(piece))
                     //{
                     //    Board[tmp.X, tmp.Y] = piece;
                     //    piece.Move(tmp.X, tmp.Y);
                     //    Board[x, y] = tmp2;
                     //}
+                    return true;
                 }
                 else
                 {
-                    throw new Exception("fdsfsdf");
+                    return false;
                 }
             }
             else
             {
-                Board[piece.X, piece.Y] = null;
-                piece.Move(x, y);
-                Board[x, y] = piece;
+                if(piece.Move(x,y) == true)
+                {
+                    Board[piece.X, piece.Y] = null;
+                    piece.Move(x, y);
+                    Board[x, y] = piece;
+                }
+                else
+                {
+                    return false;
+                }
                 //if (IsKingInCheck(piece))
                 //{
                 //    Board[tmp.X, tmp.Y] = piece;
                 //    piece.Move(tmp.X, tmp.Y);
                 //    Board[x, y] = tmp2;
                 //}
+                return true;
             }
         }
     }

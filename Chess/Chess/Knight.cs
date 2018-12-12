@@ -65,18 +65,18 @@ namespace Chess
             }
         }
 
-        public IPiece Move(int x, int y)
+        public bool Move(int x, int y)
         {
             GetAvailableMoves();
-            if (ChessBoard[x, y] == 1) 
+            if (ChessBoard[x, y] == 1)
             {
                 this.X = x;
                 this.Y = y;
-                return this;
+                return true;
             }
             else
             {
-                throw new Exception("fdsfsdf");
+                return false;
             }
         }
     }
