@@ -37,6 +37,7 @@ namespace Chess
                 }
                 Console.Write("\n");
             }
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
         }
 
         static public void SetPieces(ChessBoard chessBoard)
