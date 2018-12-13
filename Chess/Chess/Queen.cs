@@ -34,56 +34,52 @@ namespace Chess
             }
             for (i = X + 1; i < 8; i++)
             {
-                ChessBoard[X, i] = 1;
-                if (OccupiedFields[X, i] == 1)
+                ChessBoard[i, Y] = 1;
+                if (OccupiedFields[i, Y] == 1)
                     break;
             }
             for (i = X - 1; i >= 0; i--)
             {
-                ChessBoard[X, i] = 1;
-                if (OccupiedFields[X, i] == 1)
+                ChessBoard[i, Y] = 1;
+                if (OccupiedFields[i, Y] == 1)
                     break;
             }
             for (i = Y + 1; i < 8; i++)
             {
-                ChessBoard[i, Y] = 1;
-                if (OccupiedFields[i, Y] == 1)
+                ChessBoard[X, i] = 1;
+                if (OccupiedFields[X, i] == 1)
                     break;
             }
             for (i = Y - 1; i >= 0; i--)
             {
-                ChessBoard[i, Y] = 1;
-                if (OccupiedFields[i, Y] == 1)
+                ChessBoard[X, i] = 1;
+                if (OccupiedFields[X, i] == 1)
                     break;
             }
-            for (i = X + 1; i < 8; i++)
-                for (j = Y + 1; i < 8; i++)
-                {
-                    ChessBoard[i, j] = 1;
-                    if (OccupiedFields[i, j] == 1)
-                        break;
-                }
-            for (i = X - 1; i >= 0; i--)
-                for (j = Y + 1; i < 8; i++)
-                {
-                    ChessBoard[i, j] = 1;
-                    if (OccupiedFields[i, j] == 1)
-                        break;
-                }
-            for (i = X - 1; i >= 0; i--)
-                for (j = Y - 1; i >= 0; i--)
-                {
-                    ChessBoard[i, j] = 1;
-                    if (OccupiedFields[i, j] == 1)
-                        break;
-                }
-            for (i = X + 1; i < 8; i++)
-                for (j = Y - 1; i >= 0; i--)
-                {
-                    ChessBoard[i, j] = 1;
-                    if (OccupiedFields[i, j] == 1)
-                        break;
-                }
+            for (j = Y + 1, i = X + 1; j < 8 && i < 8; j++, i++)
+            {
+                ChessBoard[i, j] = 1;
+                if (OccupiedFields[i, j] == 1)
+                    break;
+            }
+            for (j = Y + 1, i = X - 1; j < 8 && i >= 0; j++, i--)
+            {
+                ChessBoard[i, j] = 1;
+                if (OccupiedFields[i, j] == 1)
+                    break;
+            }
+            for (j = Y - 1, i = X - 1; j >= 0 && i >= 0; j--, i--)
+            {
+                ChessBoard[i, j] = 1;
+                if (OccupiedFields[i, j] == 1)
+                    break;
+            }
+            for (j = Y - 1, i = X + 1; j >= 0 && i < 8; j--, i++)
+            {
+                ChessBoard[i, j] = 1;
+                if (OccupiedFields[i, j] == 1)
+                    break;
+            }
         }
 
         public void Move(int x, int y)

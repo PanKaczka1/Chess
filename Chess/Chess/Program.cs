@@ -11,11 +11,11 @@ namespace Chess
         static void Main(string[] args)
         {
             Console.Title = "Chess";
+            Console.ForegroundColor = ConsoleColor.White;
             Console.OutputEncoding = Encoding.UTF8;
             MainMenu.DrawMenu();
-            Console.Clear();
-            MainMenu.DrawMenu();
             MainMenu.ChoseMenuOption();
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             ChessBoard chessBoard = new ChessBoard();
             View.DrawChessBoard();

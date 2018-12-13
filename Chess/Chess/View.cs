@@ -37,11 +37,12 @@ namespace Chess
                 }
                 Console.Write("\n");
             }
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.White;
         }
 
         static public void SetPieces(ChessBoard chessBoard, int cursorLeft, int cursorTop)
         {
+            Console.BackgroundColor = ConsoleColor.White;
             int i, j, k = 0, l;
             for (i = 3; i < 27; i += 3)
             {
@@ -116,7 +117,8 @@ namespace Chess
             int xBoard = 0, yBoard = 0;
             while(true)
             {
-                switch(Console.ReadKey(true).Key)
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.UpArrow:
                         if (yBoard - 1 < 0)
