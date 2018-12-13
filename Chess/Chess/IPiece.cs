@@ -15,6 +15,7 @@ namespace Chess
         Enums.Color Color { get; set; }
 
         void GetAvailableMoves();
-        bool Move(int x, int y);
+        void Move(int x, int y);
+        bool CanMove(int x, int y);
     }
 }

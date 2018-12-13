@@ -92,7 +92,7 @@ namespace Chess
             {
                 if(Board[x,y].Color != piece.Color)
                 {
-                    if (piece.Move(x, y) == true)
+                    if (piece.CanMove(x, y) == true)
                     {
                         Board[piece.X, piece.Y] = null;
                         piece.Move(x, y);
@@ -117,7 +117,7 @@ namespace Chess
             }
             else
             {
-                if(piece.Move(x,y) == true)
+                if(piece.CanMove(x,y) == true)
                 {
                     Board[piece.X, piece.Y] = null;
                     piece.Move(x, y);

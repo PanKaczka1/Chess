@@ -62,13 +62,16 @@ namespace Chess
                 }
         }
 
-        public bool Move(int x, int y)
+        public void Move(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+        public bool CanMove(int x, int y)
         {
             GetAvailableMoves();
-            if (ChessBoard[x, y] == 1)  
+            if (ChessBoard[x, y] == 1)
             {
-                this.X = x;
-                this.Y = y;
                 return true;
             }
             else
