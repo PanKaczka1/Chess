@@ -24,19 +24,19 @@ namespace Chess
 
         public void GetAvailableMoves()
         {
-            if(X < 8)
+            if(X < 7)
                 ChessBoard[X + 1, Y] = 1;
-            if(X < 8 && Y < 8)
+            if(X < 7 && Y < 7)
                 ChessBoard[X + 1, Y + 1] = 1;
-            if(X < 8 && Y > 0)
+            if(X < 7 && Y > 0)
                 ChessBoard[X + 1, Y - 1] = 1;
             if(X > 0)
                 ChessBoard[X - 1, Y] = 1;
-            if(X > 0 && Y < 8)
+            if(X > 0 && Y < 7)
                 ChessBoard[X - 1, Y + 1] = 1;
             if(X > 0 && Y > 0)
                 ChessBoard[X - 1, Y - 1] = 1;
-            if(Y < 8)
+            if(Y < 7)
                 ChessBoard[X, Y + 1] = 1;
             if(Y > 0)
                 ChessBoard[X, Y - 1] = 1;

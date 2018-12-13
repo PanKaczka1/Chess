@@ -102,12 +102,12 @@ namespace Chess
                     {
                         return false;
                     }
-                    //if (IsKingInCheck(piece))
-                    //{
-                    //    Board[tmp.X, tmp.Y] = piece;
-                    //    piece.Move(tmp.X, tmp.Y);
-                    //    Board[x, y] = tmp2;
-                    //}
+                    if (IsKingInCheck(piece))
+                    {
+                        Board[tmp.X, tmp.Y] = piece;
+                        piece.Move(tmp.X, tmp.Y);
+                        Board[x, y] = tmp2;
+                    }
                     return true;
                 }
                 else
@@ -127,12 +127,12 @@ namespace Chess
                 {
                     return false;
                 }
-                //if (IsKingInCheck(piece))
-                //{
-                //    Board[tmp.X, tmp.Y] = piece;
-                //    piece.Move(tmp.X, tmp.Y);
-                //    Board[x, y] = tmp2;
-                //}
+                if (IsKingInCheck(piece))
+                {
+                    Board[tmp.X, tmp.Y] = piece;
+                    piece.Move(tmp.X, tmp.Y);
+                    Board[x, y] = piece;
+                }
                 return true;
             }
         }

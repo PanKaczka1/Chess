@@ -41,7 +41,6 @@ namespace Chess
                         ChessBoard[X,Y - 1] = 1;
                         if (OccupiedFields[X, Y - 1] == 0)
                             ChessBoard[X, Y - 2] = 1;
-                        haveMoved = true;
                         break;
                     }
                     else
@@ -55,7 +54,6 @@ namespace Chess
                         ChessBoard[X,Y + 1] = 1;
                         if (OccupiedFields[X, Y + 1] == 0) 
                             ChessBoard[X,Y + 2] = 1;
-                        haveMoved = true;
                         break;
                     }
                     else
@@ -68,8 +66,9 @@ namespace Chess
 
         public void Move(int x, int y)
         {
-                this.X = x;
-                this.Y = y;
+            haveMoved = true;
+            this.X = x;
+            this.Y = y;
         }
         public bool CanMove(int x , int y)
         {
