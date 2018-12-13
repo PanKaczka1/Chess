@@ -106,7 +106,7 @@ namespace Chess
                     {
                         Board[tmp.X, tmp.Y] = piece;
                         piece.Move(tmp.X, tmp.Y);
-                        Board[x, y] = tmp2;
+                        Board[x, y] = piece;
                     }
                     return true;
                 }
