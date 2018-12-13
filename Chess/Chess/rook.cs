@@ -34,26 +34,26 @@ namespace Chess
             }
             for (i = X + 1; i < 8; i++) 
             {
-                ChessBoard[X, i] = 1;
-                if (OccupiedFields[X, i] == 1)
+                ChessBoard[i, Y] = 1;
+                if (OccupiedFields[i, Y] == 1)
                     break;
             }
             for (i = X - 1; i >= 0; i--)
             {
-                ChessBoard[X, i] = 1;
-                if (OccupiedFields[X, i] == 1)
+                ChessBoard[i, Y] = 1;
+                if (OccupiedFields[i, Y] == 1)
                     break;
             }
             for (i = Y + 1; i < 8; i++)
             {
-                ChessBoard[i, Y] = 1;
-                if (OccupiedFields[i, Y] == 1)
+                ChessBoard[X, i] = 1;
+                if (OccupiedFields[X, i] == 1)
                     break;
             }
             for (i = Y - 1; i >= 0; i --)
             {
-                ChessBoard[i, Y] = 1;
-                if (OccupiedFields[i, Y] == 1)
+                ChessBoard[X, i] = 1;
+                if (OccupiedFields[X, i] == 1)
                     break;
             }
         }

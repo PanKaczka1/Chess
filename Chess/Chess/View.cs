@@ -111,7 +111,7 @@ namespace Chess
 
         static public void MoveFocus(ChessBoard chessBoard, int x, int y)
         {
-            chessBoard = chessBoard;
+            Enums.Color previousColor = Enums.Color.Black;
             IPiece piece = null;
             int xBoard = 0, yBoard = 0;
             while(true)
@@ -150,11 +150,20 @@ namespace Chess
                         int cursorLeft = Console.CursorLeft;
                         int cursorTop = Console.CursorTop;
                         Console.SetCursorPosition(3, 10);
-                        Console.Write("                ");
+                        Console.Write("                   ");
                         Console.SetCursorPosition(cursorLeft, cursorTop);
                         if (piece == null)
                         {
-                            piece = chessBoard.Board[xBoard, yBoard];
+                            if(chessBoard.Board[xBoard, yBoard] != null)
+                            {
+                                piece = chessBoard.Board[xBoard, yBoard];
+                                if (piece.Color == previousColor)
+                                {
+                                    Console.SetCursorPosition(3, 10);
+                                    Console.Write("Its not your piece!");
+                                    piece = null;
+                                }
+                            }
                         }
                         else
                         {
@@ -167,7 +176,8 @@ namespace Chess
                             }
                             else
                             {
-                            chessBoard.Move(xBoard, yBoard, piece);
+                                chessBoard.Move(xBoard, yBoard, piece);
+                                previousColor = piece.Color;
                             }
                             piece = null;
                             DrawChessBoard();
